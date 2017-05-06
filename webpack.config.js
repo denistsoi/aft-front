@@ -11,14 +11,14 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // use path
 const outputDir = `${__dirname}/dist`;
-const sourceDir = 'src';
+const sourceDir = 'app';
 
 /**
  * append files in source directory to webpackentry
  */
 
 let webpackentry = {
-  bundle: './src/index.js',
+  bundle: `${sourceDir}/index.js`,
   vendor: [
     'mapbox-gl',
     'supercluster',
