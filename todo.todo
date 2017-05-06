@@ -1,0 +1,14 @@
+
+Backend
+☐ mongodb
+☐ express -> api filter
+☐ docker // push to heroku // heroku build pack?
+
+☐ worker data ->  save to dbs
+
+Nice to have
+☐ redis cache
+
+Frontend
+☐ mapbox -> osm2tileserver (open)
+☐ 
