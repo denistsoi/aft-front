@@ -1,10 +1,17 @@
 /** module deps */
-import mapstyles from './map-styles';
-import mapboxgl from 'mapbox-gl';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 
+import Map from 'Components/map';
 
-var map = new mapboxgl.Map({
-    container: 'map',
-    style: mapstyles
-});
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <Map></Map>
+      </div>
+    )
+  }
+};
 
+ReactDOM.render(<App />, document.getElementById("app"));

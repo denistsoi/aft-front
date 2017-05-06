@@ -10,8 +10,8 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // use path
-const outputDir = `${__dirname}/dist`;
-const sourceDir = 'app';
+const outputDir = `${__dirname}/public`;
+const sourceDir = `${__dirname}/app`;
 
 /**
  * append files in source directory to webpackentry
@@ -21,7 +21,6 @@ let webpackentry = {
   bundle: `${sourceDir}/index.js`,
   vendor: [
     'mapbox-gl',
-    'supercluster',
   ]
 }
 
@@ -34,7 +33,6 @@ const config = {
   output: {
     path: outputDir,
     filename: '[name].js',
-    publicPath: '/'
   },
   module: {
     rules: [{
@@ -60,7 +58,8 @@ const config = {
   ],
   resolve: {
     alias: {
-      "Utils": path.resolve(__dirname, 'src/utils/')
+      "Utils": path.resolve(__dirname, 'app/utils/'),
+      "Components": path.resolve(__dirname, 'app/components/')
     }
   },
 };
