@@ -1,16 +1,11 @@
 require('dotenv').load();
 
 var express = require('express');
-// var mongo = require('mongodb').Client;
 var mongoose = require('mongoose');
 var port = process.env.PORT || 3000;
 var debug = require('debug');
 
 var app = express();
-
-// const URL_DB = process.env.MONGO_URL;
-// const datasource = 'https://data.sfgov.org/resource/wwmu-gmzc.json';
-
 
 mongoose.connect(process.env.MONGODB_URL);
 var db = mongoose.connection;
@@ -21,7 +16,16 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
 db.once('open', ()=> {
   // find if db has collection movies
-  console.log('connected');
+  console.log('connected to');
+
+  mongoose.connection.db.listCollections({name: 'movies'}).next((err, collinfo)=>{
+    if (err) throw new Error('Error', err);
+    if(!collinfo) {
+      // movies collection is empty
+      console.log('movies collection is empty... starting worker');
+      // go do some work...
+    }
+  });
 });
 
 app.use(express.static(`${__dirname}/public`));
