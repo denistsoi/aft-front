@@ -1,6 +1,9 @@
 ✔ Add project skeleton @done (5/6/2017, 3:27:16 PM)
 ☐ setup backend 
     ☐ scrape SF movies api -> possibly as worker
+    ☐ fetch geolocation and save to json (clean worker to use async/await)
+    ☐ massage results (remove 'season' / 'pilot' or 'no location data films')
+    
     ☐ save results to db
     ☐ setup filter frontend api
 
