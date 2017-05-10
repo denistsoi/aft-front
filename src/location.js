@@ -1,3 +1,4 @@
+// check if location exists
 require('dotenv').load();
 
 var mapbox = require('mapbox');

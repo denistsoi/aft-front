@@ -13,9 +13,10 @@ var db = mongoose.connection;
 /**
  * connect to db
  */
+// var opendbConnection = function(callback) {
 db.on('error', console.error.bind(console, 'connection error: '));
-db.once('open', ()=> {
-  // find if db has collection movies
+db.once('open', (cb)=> {
+    // find if db has collection movies
   console.log('connected to');
 
   mongoose.connection.db.listCollections({name: 'movies'}).next((err, collinfo)=>{
@@ -24,9 +25,12 @@ db.once('open', ()=> {
       // movies collection is empty
       console.log('movies collection is empty... starting worker');
       // go do some work...
+      
     }
   });
 });
+// }
+
 
 app.use(express.static(`${__dirname}/public`));
 
@@ -40,5 +44,5 @@ app.post('/search', (req, res) => {
 });
 
 app.listen(port, ()=>{
-  debug('server is listening to port: ', port);
+  console.log('server is listening to port: ', port);
 });

@@ -9,16 +9,71 @@ const request = require('request');
 const fs = require('fs');
 const datasource = 'https://data.sfgov.org/resource/wwmu-gmzc.json';
 
-// get data
-var getsource = function() {
-  return new Promise((resolve, reject)=> {
-    request.get(datasource, (err, body, response)=> {
-      resolve(body);
-    });
-  });
-};
 
-var Movie = require('../models/movie');
+// get data
+// var getSource = function() {
+//   return new Promise((resolve, reject)=> {
+//     request.get(datasource, (err, body, response)=> {
+//       resolve(body.toJSON().body);
+//     });
+//   });
+// };
+
+// var mongoose = require('mongoose');
+// mongoose.connect('mongodb://localhost:27017/data');
+
+
+// getSource()(movies => {
+// var movies = JSON.parse(movies);
+
+// var fm = movies.slice(0,1);
+
+
+var Movie = require(`${__dirname}/../models/movie`);
+// Movie.remove({}, (err)=> {
+//   console.log('remove', err);
+// });
+
+// Movie.findOne({ title: fm.title }, (err, doc)=>{
+//   console.log(err, doc);
+//   if (!err) {
+//     if (!doc) {
+//       var newMovie = new Movie({
+//         title: fm.title
+//       });
+
+//       newMovie.save().then(function(d) {
+//         console.log(d);
+//       });
+//     }
+//   }
+// });
+  // // return new Promise((resolve, reject) => {
+  // //   Movie.collection.insert(movies)
+  // //   Movie.findOne({ title: movies[0].title }, (err, doc) =>{
+  // //     console.log('film', err, doc);
+  // //     try {
+  // //       resolve(doc);
+  // //     } catch (err) {
+  // //       reject('no film');
+  // //     };
+  // //   });
+  // // });
+  // // movies.slice(0,4);
+
+  // Movie.collection.insert(movies, onInsert);
+  // function onInsert(err,docs){
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     console.log('docs: ', docs.length);
+  //   }
+  // }
+  // Movie.find({}, (err, doc)=>{
+  //   console.log(err, doc);
+  // });
+// });
+// }).then(movie => { console.log( movie ); }).catch(err => {console.log(err) });;
 
 // getsource().then(json => {
 //   var movies = json;
